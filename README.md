@@ -34,11 +34,11 @@
 | 学籍番号 | 氏名 | 担当機能概要 | 作業ファイル名 | 作業ブランチ名 |
 | :--- | :--- | :--- | :--- | :--- |
 | C0A25115 | 佐藤 泉葵 | 基本機能(完全版ベース)の作成・統合管理 | `game06.py` | `main` |
-| （学籍番号） | （氏名） | 追加1：プレイヤー拡張（ダッシュ、残像エフェクトなど） | `feature_player_ex.py` | `feature/player_ex` |
-| （学籍番号） | （氏名） | 追加2：ボス・ギミック（定期襲来する敵、お邪魔ビームなど） | `feature_boss.py` | `feature/boss` |
-| （学籍番号） | （氏名） | 追加3：特殊アイテム（磁石効果、無敵、スコア倍化など） | `feature_special.py` | `feature/special` |
-| （学籍番号） | （氏名） | 追加4：コンボシステム（連続取得ボーナス、高度なスコア計算） | `feature_combo.py` | `feature/combo` |
-| （学籍番号） | （氏名） | 追加5：シーン・UI演出（タイトル画面、リザルト画面、BGM） | `feature_scene.py` | `feature/scene` |
+| （C0A25203） | （畠山　悠人） | 追加1：プレイヤー拡張（ダッシュ、残像エフェクトなど） | `feature_player_ex.py` | `feature/player_ex` |
+| （C0A25211） | （原口　來皐） | 追加2：ボス・ギミック（定期襲来する敵、お邪魔ビームなど） | `feature_boss.py` | `feature/boss` |
+| （C0A25119） | （塩澤　拓也） | 追加3：特殊アイテム（磁石効果、無敵、スコア倍化など） | `feature_special.py` | `feature/special` |
+| （C0A25115） | （佐藤　泉葵） | 追加4：コンボシステム（連続取得ボーナス、高度なスコア計算） | `feature_combo.py` | `feature/combo` |
+| （C0A25147） | （高橋　光星） | 追加5：シーン・UI演出（タイトル画面、リザルト画面、BGM） | `feature_scene.py` | `feature/scene` |
 
 ---
 
