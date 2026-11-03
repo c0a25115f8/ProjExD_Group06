@@ -1,88 +1,47 @@
-import os
-import sys
-import pygame as pg
+# プロジェクト演習II テーマD グループ06
+## プロジェクト名：丸焼き豪華豚
 
-# 必須条件：カレントディレクトリをこのファイルがある場所に変更
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
+### ■ ゲーム概要
+（ここにゲームの簡単な説明、目的、操作方法などを記載する）
+例：プレイヤーが豪華豚を操作し、迫りくる調理器具を避けながら生き残るゲーム。
 
-# ---------------------------------------------------------
-# 各自の追加機能を別ファイルからインポートする（仮のファイル名）
-# 開発時は、各メンバーが自分のファイル（例: feature1.py）を作成して作業する
-# ---------------------------------------------------------
-# import feature1_player    # メンバー1（主人公移動・状態管理など）
-# import feature2_effect    # メンバー2（丸焼きエフェクトなど）
-# import feature3_timer     # メンバー3（キッチンタイマー機能など）
-# import feature4_item      # メンバー4（アイテムや調理器具など）
-# import feature5_enemy     # メンバー5（妨害キャラやスコア管理など）
+### ■ 実行環境・必須ライブラリ
+- Python 3.x
+- pygame
 
-class BasePlayer(pg.sprite.Sprite):
-    """
-    基本機能としての仮キャラクター。
-    ※最終的にはメンバー1が拡張したクラスに差し替える想定。
-    """
-    def __init__(self):
-        super().__init__()
-        # 仮の赤い四角形を豪華豚とする
-        self.image = pg.Surface((50, 50))
-        self.image.fill((255, 0, 0))
-        self.rect = self.image.get_rect()
-        self.rect.center = (400, 300)
+### ■ 実行方法
+リポジトリをクローン後、ターミナルで以下のコマンドを実行。
+`python main.py`
+※画面サイズは 800x600、FPSは 60 で固定。
 
-    def update(self):
-        keys = pg.key.get_pressed()
-        if keys[pg.K_UP]:    self.rect.y -= 5
-        if keys[pg.K_DOWN]:  self.rect.y += 5
-        if keys[pg.K_LEFT]:  self.rect.x -= 5
-        if keys[pg.K_RIGHT]: self.rect.x += 5
+---
 
-def main():
-    pg.init()
-    # 画面サイズやタイトルはチームで合意して変更すること
-    screen = pg.display.set_mode((800, 600))
-    pg.display.set_caption("丸焼き豪華豚 - 共同開発ベース")
-    clock = pg.time.Clock()
+### ■ 【重要】共同開発のルール（全員必読）
+本プロジェクトではコンフリクト（コードの競合）を防ぐため、以下のルールを厳守すること。
 
-    # スプライトグループ（一括で更新・描画するための入れ物）
-    all_sprites = pg.sprite.Group()
+1. **`main.py` の直接編集禁止**
+   各自の追加機能は必ず `feature_名前.py` という別ファイルを作成してそこに記述する。`main.py` には、完成した別ファイルを `import` して呼び出す処理のみを追記する。
 
-    # キャラクターのインスタンス化
-    player = BasePlayer()
-    all_sprites.add(player)
+2. **他人の変数への直接アクセス禁止**
+   他のクラス（例：プレイヤーのHPや座標）の数値を直接書き換えたり、読み取ったりしない。必要な場合は必ずメソッド（関数）を介してやり取りする設計にすること。
 
-    # ---------------------------------------------------------
-    # 各メンバーの機能のインスタンス化（例）
-    # timer = feature3_timer.KitchenTimer()
-    # ---------------------------------------------------------
+3. **ブランチ運用の徹底**
+   各自が実装作業を行う際は、必ず `main` ブランチから自分の機能ブランチ（例: `feature/timer`）を切って作業する。
 
-    while True:
-        for event in pg.event.get():
-            if event.type == pg.QUIT:
-                pg.quit()
-                sys.exit()
-            
-            # キーボード入力など、イベント駆動の処理は各インスタンスに渡す
-            # if event.type == pg.KEYDOWN:
-            #     feature4_item.handle_event(event)
+---
 
-        # --- 更新処理 (Update) ---
-        all_sprites.update()
-        
-        # 個別機能の更新処理をここで呼び出す
-        # timer.update()
-        # effect.update(player.rect)  # プレイヤーの座標を渡すなど
+### ■ メンバーと担当機能一覧
+（各自、自分の担当機能、作成するファイル名、使用するブランチ名を追記すること）
 
-        # --- 描画処理 (Draw) ---
-        screen.fill((255, 255, 255)) # 背景（白）
-        
-        # スプライトを一括描画
-        all_sprites.draw(screen)
+| 学籍番号 | 氏名 | 担当機能概要 | 作業ファイル名 (例) | 作業ブランチ名 (例) |
+| :--- | :--- | :--- | :--- | :--- |
+| C0A25115 | 佐藤 泉葵 | 基本機能(生成AIベース)の統合・管理 | `main.py` | `main` |
+| （学籍番号） | （氏名） | （例：丸焼きエフェクト） | `feature_effect.py` | `feature/effect` |
+| （学籍番号） | （氏名） | （例：キッチンタイマー） | `feature_timer.py`  | `feature/timer` |
+| （学籍番号） | （氏名） | （例：調理器具・アイテム） | `feature_item.py`   | `feature/item` |
+| （学籍番号） | （氏名） | （例：妨害敵キャラ） | `feature_enemy.py`  | `feature/enemy` |
 
-        # 個別機能の描画処理をここで呼び出す
-        # timer.draw(screen)
-        # effect.draw(screen)
+---
 
-        pg.display.update()
-        clock.tick(60) # 60FPS
-
-if __name__ == "__main__":
-    main()
+### ■ 提出時の注意
+提出時は、このREADMEに加え、自身の書いたコード、および「基本機能（ベース部分）との差分（Compare画面）」をPDF化してマージすること。
